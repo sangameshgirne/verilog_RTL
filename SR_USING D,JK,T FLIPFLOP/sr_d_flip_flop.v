@@ -1,8 +1,10 @@
+
 module sr_using_d(s,r,clk,rst,q,qbar);
 input s,r,clk,rst;
 output q,qbar;
-assign w=s|(~r|q);
-dflipflop(w,clk,rst,q,qbar);
+assign w=s|(~r&q);
+dflipflop DUT1(w,clk,rst,q,qbar);
+endmodule
 
 module dflipflop(d,clk,rst,q,qbar);
 input d,clk,rst;
